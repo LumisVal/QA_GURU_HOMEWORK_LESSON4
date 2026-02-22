@@ -84,3 +84,18 @@ email["masked_from"] = login[:2] + "***@" + domain
 # 14. Удалите из списка личных доменов
 personal_domains.remove("list.ru")
 personal_domains.remove("bk.ru")
+
+
+print(f"1. Создайте словарь email:\n{email}")
+print(f"2. Добавьте дату отправки: {email["date"]}")
+print(f"3. Нормализуйте e-mail адреса: {email["from"]}, {email["to"]}")
+print(f"4. Извлеките логин и домен отправителя: {login}, {domain}")
+print(f"5. Создайте сокращённую версию текста: {email["short_body"]}")
+print(f"7. Проверьте что в списке личных и корпоративных доменов нет пересечений: {no_domains_overlap}")
+print(f"8. Проверьте «корпоративность» отправителя: {is_corporate}")
+print(f"9. Соберите «чистый» текст сообщения:\n{email["clean_body"]}")
+print(f"10. Сформируйте текст отправленного письма:\n{email["sent_text"]}")
+print(f"11. Рассчитайте количество страниц печати: {pages}")
+print(f"12. Проверьте пустоту темы и тела письма: {is_subject_empty}, {is_body_empty}")
+print(f"13. Создайте «маску» e-mail отправителя: {email["masked_from"]}")
+print(f"14. Удалите из списка личных доменов: {personal_domains}")
