@@ -3,7 +3,7 @@ import datetime
 # 1. Создайте словарь email
 email = {
     "subject": "Quarterly Report",
-    "from": "Alice.Cooper@Company. ",
+    "from": "Alice.Cooper@Company.com ",
     "to": " bob_smith@Gmail.com ",
     "body": "Hello Bob,\n\tHere is the quarterly report.\n\tPlease review and let me know your feedback.\n\nBest,\nAlice"
 }
@@ -27,7 +27,7 @@ email ["short_body"] = email["body"][0:10] + "..."
 
 
 #6. Списки доменов
-personal_domeins = {
+personal_domains = {
     "gmail.com",
     "list.ru",
     "yahoo.com",
@@ -40,7 +40,7 @@ personal_domeins = {
     "bk.ru",
     "inbox.ru",
 }
-corporate_domeins = {
+corporate_domains = {
     "company.ru",
     "corporation.com",
     "university.edu",
@@ -51,11 +51,11 @@ corporate_domeins = {
 
 
 # 7. Проверьте что в списке личных и корпоративных доменов нет пересечений
-no_domein_overlap = not (personal_domeins & corporate_domeins)
+no_domains_overlap = not (personal_domains & corporate_domains)
 
 
 # 8. Проверьте «корпоративность» отправителя
-is_corporate = domain in corporate_domeins
+is_corporate = domain in corporate_domains
 
 
 # 9. Соберите «чистый» текст сообщения
@@ -73,8 +73,8 @@ pages = (len(email["sent_text"]) + 499) // 500
 
 
 # 12. Проверьте пустоту темы и тела письма
-is_subject_empty = not bool(email["subject"].strip())
-is_body_empty = not bool(email["body"].strip())
+is_subject_empty = not email["subject"].strip()
+is_body_empty = not email["body"].strip()
 
 
 # 13. Создайте «маску» e-mail отправителя
@@ -84,18 +84,3 @@ email["masked_from"] = login[:2] + "***@" + domain
 # 14. Удалите из списка личных доменов
 personal_domains.remove("list.ru")
 personal_domains.remove("bk.ru")
-
-
-print(f"1. Создайте словарь email:\n{email}")
-print(f"2. Добавьте дату отправки: {email["date"]}")
-print(f"3. Нормализуйте e-mail адреса: {email["from"]}, {email["to"]}")
-print(f"4. Извлеките логин и домен отправителя: {login}, {domain}")
-print(f"5. Создайте сокращённую версию текста: {email["short_body"]}")
-print(f"7. Проверьте что в списке личных и корпоративных доменов нет пересечений: {no_domain_overlap}")
-print(f"8. Проверьте «корпоративность» отправителя: {is_corporate}")
-print(f"9. Соберите «чистый» текст сообщения:\n{email["clean_body"]}")
-print(f"10. Сформируйте текст отправленного письма:\n{email["sent_text"]}")
-print(f"11. Рассчитайте количество страниц печати: {pages}")
-print(f"12. Проверьте пустоту темы и тела письма: {is_subject_empty}, {is_body_empty}")
-print(f"13. Создайте «маску» e-mail отправителя: {email["masked_from"]}")
-print(f"14. Удалите из списка личных доменов: {personal_domains}")
